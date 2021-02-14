@@ -1,4 +1,4 @@
-#!/home/vladimir/PycharmProjects/djangoProject/venv/bin/python
+#!/home/vladimir/PycharmProjects/okonew/venv/bin/python
 # -*- coding: utf-8 -*-
 import re
 import sys
