@@ -16,3 +16,6 @@ ul.errorlist li{
 }
 input, textarea {
 }
+.required label:after {
+    content: "*";
+}
