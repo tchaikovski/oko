@@ -25,7 +25,7 @@ SECRET_KEY = 'mitgq7_s%)#6b&)n_6&=wgtde-ra3--vty-fs&9$m-pp@g696m'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1']
 
 
 # Application definition

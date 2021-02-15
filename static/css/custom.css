@@ -1,0 +1,18 @@
+
+ul.errorlist li{
+    margin: 0;
+    padding: 0;
+}
+.errorlist li {
+    border: 1px solid red;
+    color: red;
+    background: #a52834;
+    list-style-position: inside;
+    display: block;
+    font-size: 1.2em;
+    margin: 0 0 3px;
+    text-align: center;
+    border-radius: 3px;
+}
+input, textarea {
+}
