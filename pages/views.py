@@ -11,11 +11,13 @@ def index(request):
 
 
 def pageindex(request, pagename):
-    pg = Page.objects.get(permalink=pagename)
+    pg = get_object_or_404(Page, permalink=pagename)
+    # pg = Page.objects.get(permalink=pagename)
     context = {
         'title': pg.title,
         'content': pg.bodytext,
-        'last_update': pg.update_date,
+        'last_updated': pg.update_date,
+        'page_list': Page.objects.all(),
     }
 
     return render(request, 'pages/page.html', context)
