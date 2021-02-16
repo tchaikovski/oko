@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block title %}
+User registration
+{% endblock title %}
+
+{% block sidenav %}
+        <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
+{% endblock sidenav %}
+
+{% block content %}
+<h1>User registration</h1>
+    <p>Enter user name and password to register</p>
+
+    <form method="post" action="">
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Submit</button>
+    {% csrf_token %}
+    </form>
+{% endblock content %}

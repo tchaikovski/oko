@@ -51,6 +51,19 @@
         <li class="nav-item">
           <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
         </li>
+      {% if user.is_authenticated %}
+       <li class="nav-item">
+          <sapn class="nav-link " tabindex="-1" >Hello, {{ user.username }}.
+          <a style="display: inline;" class="nav-link" href="{% url 'logout' %}?next=/">Log out</a></sapn>
+        </li>
+          {% else %}
+         <li class="nav-item">
+          <sapn class="nav-link " tabindex="-1" >Not logget in.
+          <a style="display: inline;"  class="nav-link" href="{% url 'login' %}?next=/">Log In</a></sapn>
+        </li>
+
+      {% endif %}
+
       </ul>
       <form class="d-flex">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
