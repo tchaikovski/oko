@@ -18,9 +18,31 @@
         </p>
 
     {% else %}
+<form action="" enctype="multipart/form-data" method="post" novalidate>
 
-        <form action="" enctype="multipart/form-data"
-              method="post" novalidate>
+{% if form.errors %}
+
+
+
+<div class="bd-example bg-light">
+<div class="toast fade show" role="alert" aria-live="assertive" aria-atomic="true">
+  <div class="toast-body">
+    {% for error in form.errors %}
+
+{{ error|escape }}
+
+
+
+    {% endfor %}
+ <div class="mt-2 pt-2 border-top"></div>
+  </div>
+</div>
+
+</div>
+
+
+    {% endif %}
+
 
             <table>
 
@@ -30,7 +52,8 @@
 
                     <td>&nbsp;</td>
 
-                    <td><input type="submit" value="Submit"></td>
+                    <td>  <button type="submit" class="btn btn-primary">Submit</button>
+</td>
 
                 </tr>
 
