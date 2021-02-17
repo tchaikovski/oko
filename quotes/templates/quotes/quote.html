@@ -43,6 +43,122 @@
 
     {% endif %}
 
+{{ form.non_field.errors }}
+<div class="bd-example">
+
+<div class="form-floating mb-3">
+    {{ form.name }}
+      <label for="{{ form.name.id_for_label }}">Имя</label>
+
+    <div class="invalid-feedback">
+        {{ form.name.errors }}
+    </div>
+</div>
+
+
+<div class="form-floating mb-3">
+    {{ form.position }}
+      <label for="{{ form.position.id_for_label }}">Позиция</label>
+
+    <div class="invalid-feedback">
+        {{ form.position.errors }}
+    </div>
+</div>
+
+
+<div class="form-floating mb-3">
+    {{ form.company }}
+      <label for="{{ form.company.id_for_label }}">Компания</label>
+
+    <div class="invalid-feedback">
+        {{ form.company.errors }}
+    </div>
+</div>
+
+
+<div class="form-floating mb-3">
+    {{ form.address }}
+      <label for="{{ form.address.id_for_label }}">Имя</label>
+
+    <div class="invalid-feedback">
+        {{ form.address.errors }}
+    </div>
+</div>
+
+
+<div class="form-floating mb-3">
+    {{ form.phone }}
+      <label for="{{ form.phone.id_for_label }}">Телефон</label>
+
+    <div class="invalid-feedback">
+        {{ form.phone.errors }}
+    </div>
+</div>
+
+
+<div class="form-floating mb-3">
+    {{ form.email }}
+      <label for="{{ form.email.id_for_label }}">Е-Майл</label>
+
+    <div class="invalid-feedback">
+        {{ form.email.errors }}
+    </div>
+</div>
+
+
+<div class="form-floating mb-3">
+    {{ form.web }}
+      <label for="{{ form.web.id_for_label }}">Сайт</label>
+
+    <div class="invalid-feedback">
+        {{ form.web.errors }}
+    </div>
+</div>
+
+
+<div class="form-floating mb-3">
+    {{ form.description }}
+      <label for="{{ form.description.id_for_label }}">Описание</label>
+
+    <div class="invalid-feedback">
+        {{ form.description.errors }}
+    </div>
+</div>
+
+
+<div class="form-floating mb-3">
+    {{ form.sitestatus }}
+      <label for="{{ form.sitestatus.id_for_label }}">Статус сайта</label>
+
+    <div class="invalid-feedback">
+        {{ form.sitestatus.errors }}
+    </div>
+</div>
+
+
+<div class="form-floating mb-3">
+    {{ form.priority }}
+      <label for="{{ form.priority.id_for_label }}">Приоритет</label>
+
+    <div class="invalid-feedback">
+        {{ form.priority.errors }}
+    </div>
+</div>
+
+
+<div class="form-floating mb-3">
+    {{ form.jobfile }}
+      <label for="{{ form.jobfile.id_for_label }}">Файл</label>
+
+    <div class="invalid-feedback">
+        {{ form.jobfile.errors }}
+    </div>
+</div>
+
+
+</div>
+
+
 
             <table>
 
@@ -58,7 +174,8 @@
                 </tr>
 
             </table>
-
+'name', 'position', 'company', 'address', 'email', 'phone',
+            'web', 'description', 'sitestatus', 'priority', 'jobfile'
             {% csrf_token %}
 
         </form>

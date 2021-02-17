@@ -4,6 +4,7 @@ from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.decorators import login_required
 from django.urls import reverse_lazy
 from .models import Quote
 from .forms import QuoteForm
@@ -40,12 +41,18 @@ class QuoteList(ListView):
         return context
 
 
+@login_required(login_url=reverse_lazy('login'))
 def quote_req(request):
     submitted = False
     if request.method == 'POST':
         form = QuoteForm(request.POST, request.FILES)
         if form.is_valid():
-            form.save()
+            quote = form.save(commit=False)
+            try:
+                quote.username = request.user
+            except Exception:
+                pass
+            quote.save()
             return HttpResponseRedirect('/quote/?submitted=True')
     else:
         form = QuoteForm()
@@ -53,3 +60,4 @@ def quote_req(request):
             submitted = True
     return render(request, 'quotes/quote.html',
                   {'form': form, 'page_list': Page.objects.all(), 'submitted': submitted})
+
