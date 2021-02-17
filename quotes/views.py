@@ -5,6 +5,7 @@ from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from .models import Quote
 from .forms import QuoteForm
@@ -21,9 +22,13 @@ class Register(CreateView):
         return HttpResponseRedirect(self.success_url)
 
 
-class QuoteView(DetailView):
+class QuoteView(LoginRequiredMixin, DetailView):
+    login_url = reverse_lazy('login')
     model = Quote
     context_object_name = 'quote'
+
+    def get_queryset(self):
+        return Quote.objects.filter(username=self.request.user)
 
     def get_context_data(self, **kwargs):
         context = super(QuoteView, self).get_context_data(**kwargs)
@@ -31,9 +36,13 @@ class QuoteView(DetailView):
         return context
 
 
-class QuoteList(ListView):
+class QuoteList(LoginRequiredMixin, ListView):
+    login_url = reverse_lazy('login')
     model = Quote
     context_object_name = 'all_quotes'
+
+    def get_queryset(self):
+        return Quote.objects.filter(username=self.request.user)
 
     def get_context_data(self, **kwargs):
         context = super(QuoteList, self).get_context_data(**kwargs)

@@ -20,35 +20,42 @@
     {% else %}
 <form action="" enctype="multipart/form-data" method="post" novalidate>
 
-{% if form.errors %}
-
-
-
-<div class="bd-example bg-light">
-<div class="toast fade show" role="alert" aria-live="assertive" aria-atomic="true">
-  <div class="toast-body">
-    {% for error in form.errors %}
-
-{{ error|escape }}
-
-
-
-    {% endfor %}
- <div class="mt-2 pt-2 border-top"></div>
-  </div>
-</div>
-
-</div>
-
-
-    {% endif %}
-
+{#{% if form.errors %}#}
+{##}
+{##}
+{##}
+{#<div class="bd-example bg-light">#}
+{#<div class="toast fade show" role="alert" aria-live="assertive" aria-atomic="true">#}
+{#  <div class="toast-body">#}
+{#    {% for error in form.errors %}#}
+{##}
+{#{{ error|escape }}#}
+{##}
+{##}
+{##}
+{#    {% endfor %}#}
+{# <div class="mt-2 pt-2 border-top"></div>#}
+{#  </div>#}
+{#</div>#}
+{##}
+{#</div>#}
+{##}
+{##}
+{#    {% endif %}#}
+{##}
 {{ form.non_field.errors }}
 <div class="bd-example">
 
 <div class="form-floating mb-3">
     {{ form.name }}
-      <label for="{{ form.name.id_for_label }}">Имя</label>
+      <label for="{{ form.name.id_for_label }}">Имя
+
+      </label>
+
+    {% if form.name.errors %}
+                    <span class="alert alert-danger" role="alert"><strong>Имя </strong></span>
+
+      {% endif %}
 
     <div class="invalid-feedback">
         {{ form.name.errors }}
@@ -146,9 +153,9 @@
 </div>
 
 
-<div class="form-floating mb-3">
+<div class="input-group mb-3">
     {{ form.jobfile }}
-      <label for="{{ form.jobfile.id_for_label }}">Файл</label>
+      <label class="input-group-text"  for="{{ form.jobfile.id_for_label }}">Upload</label>
 
     <div class="invalid-feedback">
         {{ form.jobfile.errors }}
@@ -159,23 +166,25 @@
 </div>
 
 
+{##}
+{#            <table>#}
+{##}
+{#                {{ form.as_table }}#}
+{##}
+{#                <tr>#}
+{##}
+{#                    <td>&nbsp;</td>#}
+{##}
+{#                    <td>  #}
+{#</td>#}
+{##}
+{#                </tr>#}
+{##}
+{#            </table>#}
+{#'name', 'position', 'company', 'address', 'email', 'phone',#}
+{#            'web', 'description', 'sitestatus', 'priority', 'jobfile'#}
 
-            <table>
-
-                {{ form.as_table }}
-
-                <tr>
-
-                    <td>&nbsp;</td>
-
-                    <td>  <button type="submit" class="btn btn-primary">Submit</button>
-</td>
-
-                </tr>
-
-            </table>
-'name', 'position', 'company', 'address', 'email', 'phone',
-            'web', 'description', 'sitestatus', 'priority', 'jobfile'
+<button type="submit" class="btn btn-primary">Submit</button>
             {% csrf_token %}
 
         </form>
